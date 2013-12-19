@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Share/_Layout.cshtml";
+}
+<link type="text/css" rel="stylesheet" href="~/Content/AdminIndex.css">
+@{
+    if (Session["IsApply"] != null && (bool)Session["IsApply"] == false || Session["IsApply"] == null)
+    {
+        using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            <div class="AdminLogin">
+                <p align="center">enter the password</p>
+                <input type="password" name="pass" style=" text-align: center; font-size: 30px; width: 80%; margin-left:10%;margin-right: 10%; margin-bottom:5px;" />
+                <input type="submit" value="OK" style="font-size: 20px; width: 40%; height: 50px; margin-left: 30%;margin-right: 30%; margin-bottom: 20px;" />
+            </div>
+        }
+    }
+    else
+    {
+        <div class="AdminLinker">
+            <li>@Html.ActionLink("Редактировать EVENTS", "EventsTable", "Admin")</li><br><br>
+            <li>@Html.ActionLink("Редактировать NOTES", "NotesTable", "Admin")</li><br><br>
+            <li>@Html.ActionLink("Редактировать PHOTOS", "PhotosTable", "Admin")</li>
+        </div>
+    }
+}

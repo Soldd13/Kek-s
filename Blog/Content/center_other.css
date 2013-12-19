@@ -1,0 +1,109 @@
+#content {
+    width: 100%;
+    min-width: 600px;
+    min-height: 400px;
+    height: auto;
+	}
+/* CSS Document */
+.thumb {
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+}
+
+    .thumb img {
+        width: 320px;
+        height: 240px;
+        border: 1px solid #000; /* Рамка вокруг фотографии */
+        padding: 2px; /* Расстояние от картинки до рамки */
+        background: #0099CC; /* Цвет фона */
+        margin-right: 20px; /* Отступ справа */
+        margin-left: 20px;
+        margin-bottom: 5px; /* Отступ снизу */
+        margin-top: 10px;
+    }
+
+.l_p {
+    float: left;
+    margin: 0px 20px 5px 0px;
+}
+
+.r_p {
+    float: right;
+    margin: 0px 0px 5px 20px;
+}
+
+.photos {
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    font-family: Baskerville, "Palatino Linotype", Palatino, "Century Schoolbook L", "Times New Roman", serif;
+    text-align: justify;
+    min-height: 240px;
+}
+
+    .photos img {
+        width: 320px;
+        height: 240px;
+        border: 1px solid #fff;
+        box-shadow: 0 0 2px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+.CommField {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding: 10px;
+    border: solid 1px #0099cc;
+    margin-bottom: 5px;
+    
+    text-align: justify;
+    height: 100%;
+    display: inline-block;
+    background: lightgrey;
+}
+
+.left {
+    width: 15%;
+    height: 100%;
+    float: left;
+}
+
+.ComName {
+    width: 100%;
+    font-weight: bold;
+}
+
+.ComDate {
+    width: 100%;
+}
+
+.ComMess {
+    text-indent: 20px;
+    float: right;
+    height: auto;
+    width: 75%;
+    float: right;
+    padding: 10px;
+    border: solid 1px lightblue;
+    border-left: solid 3px #00ff00;
+    background: #fff;
+}
+
+.AddCom {
+    
+    background-color: #242222;
+    background-repeat: no-repeat;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#00906f), to(#242222));
+    background-image: -webkit-linear-gradient(#00906f, #242222);
+    background-image: -moz-linear-gradient(top, #00906f, #242222);
+    background-image: -ms-linear-gradient(#00906f, #242222);
+    background-image: -o-linear-gradient(#00906f, #242222);
+    background-image: linear-gradient(#00906f, #242222);
+    padding-left: 15%;
+    padding-right: 15%;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    }

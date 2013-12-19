@@ -1,0 +1,43 @@
+.header_menu {
+	padding-left: 270px;
+    border-color: #000000;
+
+}
+
+.header_menu li {
+	    background-color: #000;
+	display: inline-block;
+	background: #029070;
+	 /*animation*/
+	-webkit-transition: All 0.3s ease;
+	-moz-transition: All 0.3s ease;
+	-o-transition: All 0.3s ease;
+	-ms-transition: All 0.3s ease;
+	transition: All 0.3s ease;
+	cursor: progress;
+
+	    
+    }
+
+.header_menu li:hover {
+            box-shadow: 0 0 2px;
+        }
+
+
+    .header_menu a {
+        color: #ffffff;
+        display: block;
+        padding: 13px 15px;
+        text-decoration: none;
+        background-color: #00906f;
+        /*animation*/
+        -webkit-transition: All 0.3s ease;
+        -moz-transition: All 0.3s ease;
+        -o-transition: All 0.3s ease;
+        -ms-transition: All 0.3s ease;
+        transition: All 0.3s ease;
+    }
+
+        .header_menu a:hover {
+            color: #ff8c00;
+        }

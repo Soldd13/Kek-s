@@ -1,0 +1,118 @@
+﻿@using System.Data
+@using System.Web.UI.WebControls
+@using Blog.Models.Db
+@model Blog.Models.Db.NotesComments
+
+@{
+    ViewBag.Title = "Блог гр№  010902: Антона, Вики и Насти.";
+    Layout = "~/Views/Share/_Layout.cshtml";
+}
+<script type="text/javascript" src="~/Content/jquery-1.10.2.min.js"></script>
+
+<link type="text/css" rel="stylesheet" href="~/Content/center.css">
+<link type="text/css" rel="stylesheet" href="~/Content/comment.css">
+
+<script src="~/Js/details.js"></script>
+<script>
+    $(function () {
+        $('html').addClass($.fn.details.support ? 'details' : 'no-details');
+        $('details').details();
+    });
+</script>
+
+<div id="content">
+    @for (int i = 0; i < ViewBag.Notes.Count; i++)
+    {
+        var path = String.Format("{0}{1}", @"/Images/notes/", ViewBag.Notes[i].PhotoName + @".jpg");
+
+        if (((i + 2) % 2) == 0)
+        {
+            <div class="post_title r_t">@ViewBag.Notes[i].Title</div>
+            <div class="post">
+                <img class="l_i" src="@path">
+                @ViewBag.Notes[i].Message
+            </div>
+            <div class="date_l">
+                @ViewBag.Notes[i].Date.ToString("d")
+            </div>
+            <div class="colcom" style="text-align: right;">
+                <a href="/Home/ViewCommentsNote/@ViewBag.Notes[i].Id" style="text-align: center">Comments(@ViewBag.Notes[i].NotesComments.Count) </a>
+            </div>
+            <div class="wrapper">
+                <details>
+                    <summary style="text-align: right">leave a comment</summary>
+                    <div class="CommR">
+                        @using (Html.BeginForm("AddCommentNote", "Home"))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true)
+
+                            <input type="text" name="Id" value="@ViewBag.Notes[i].Id" hidden="hidden" />
+                            <input type="text" name="typeC" value="Note" hidden="hidden" />
+                            <input type="text" name="Page" value="index" hidden="hidden" />
+                            <div>Input Name:</div>
+                            <input type="text" name="Name" class="CommName" required="" />
+                            <div>Input message:</div>
+                            <textarea name="Message" class="CommMess" cols="40" rows="3" required=""></textarea>
+                            <input type="submit" value="ADD" class="CommBut" style="text-align: center" />
+                        }
+                    </div>
+                </details>
+            </div>
+            <hr>
+        }
+        else
+        {
+            <div class="post_title l_t">
+                @ViewBag.Notes[i].Title
+            </div>
+            <div class="post">
+                <img class="r_i" src="@path">
+                @ViewBag.Notes[i].Message
+            </div>
+            <div class="date_r">
+                @ViewBag.Notes[i].Date.ToString("d")
+            </div>
+            <div class="colcom">
+                <a href="/Home/ViewCommentsNote/@ViewBag.Notes[i].Id">Comments(@ViewBag.Notes[i].NotesComments.Count) </a>
+            </div>
+            <div class="wrapper">
+                <details>
+                    <summary style="text-align: left">leave a comment</summary>
+                    <div class="CommR">
+                        @using (Html.BeginForm("AddCommentNote", "Home"))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true)
+
+                            <input type="text" name="Id" value="@ViewBag.Notes[i].Id" hidden="hidden" />
+                            <input type="text" name="Page" value="index" hidden="hidden" />
+                            <div>Input Name:</div>
+                            <input type="text" name="Name" class="CommName" />
+                            <div>Input message:</div>
+                            <textarea name="Message" class="CommMess" cols="40" rows="3" required=""></textarea>
+                            <input type="submit" value="ADD" class="CommBut" style="text-align: center" required="" />
+                        }
+                    </div>
+                </details>
+            </div>
+            <hr>
+        }
+    }
+</div>
+<div id="box">
+
+
+
+    <div id="news">
+
+
+        @for (int i = 0; i < ViewBag.Events.Count && i < 5; i++)
+        {
+            <div class="box">
+                <p>@ViewBag.Events[i].Title</p>
+                <p>@ViewBag.Events[i].Message</p>
+            </div>
+        }
+    </div>
+</div>

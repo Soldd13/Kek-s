@@ -1,0 +1,51 @@
+﻿@model Blog.Models.Db.Events
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Share/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Events</legend>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Title)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Title)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Message)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Message)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.PhotoName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PhotoName)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Date)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Date)
+    </div>
+</fieldset>
+@using (Html.BeginForm("DeleteConfirmedEvent", "Admin"))
+{
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="text" name="id" value="@Model.Id" hidden="hidden" />
+        <input type="submit" value="Delete" /><br />
+        @Html.ActionLink("Back to Table", "EventsTable")<br />
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

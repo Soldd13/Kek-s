@@ -1,0 +1,64 @@
+﻿@using System.Data
+@using System.Web.UI.WebControls
+@using Blog.Models.Db
+@model Blog.Models.Db.EventsComments
+
+@{
+    ViewBag.Title = ViewBag.Item.Title;
+    Layout = "~/Views/Share/_Layout.cshtml";
+}
+
+@section Css {
+    <link type="text/css" rel="stylesheet" href="~/Content/center_other.css">
+}
+
+<div id="content">
+    <div class="note">
+        @{ var path = @String.Format("{0}{1}", @"/Images/events/", @ViewBag.Item.PhotoName + ".jpg");
+
+        <div class="post_title r_t">@ViewBag.Item.Title</div>
+            <div class="post">
+                <img class="l_i" src="@path">
+                @ViewBag.Item.Message
+            </div>
+            <div class="date_r">@ViewBag.Item.Date.ToString("d")</div><hr>
+        }
+    </div>
+
+    @for (int i = 0; i < ViewBag.Comments.Count; i++)
+    {
+        <div class="CommField">
+            <div class="left">
+                <div class="ComName">
+                    @ViewBag.Comments[i].Name
+                </div>
+                <div class="ComDate">
+                    @ViewBag.Comments[i].Date
+                </div>
+            </div>
+            <div class="ComMess">
+                @ViewBag.Comments[i].Message
+            </div>
+        </div>
+    }
+
+    <div class="AddCom">
+        @using (Html.BeginForm("AddCommentEvent", "Home"))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            <input type="text" name="Id" value="@ViewBag.Item.Id" hidden="hidden" />
+            <input type="text" name="Page" value="ViewComments" hidden="hidden" />
+            <div>Input Name:</div>
+            <input type="text" name="Name" class="CommName" />
+            <div>Input message:</div>
+            <textarea name="Message" class="CommMess" cols="40" rows="3"></textarea>
+            <input type="submit" value="ADD" class="CommBut" style="text-align: center; width: 100px;display: block;height: 40px;" />
+        }
+    </div>
+
+
+
+
+</div>

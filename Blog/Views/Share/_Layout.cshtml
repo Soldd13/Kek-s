@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+
+<html>
+    <head>
+        <link href="~/Images/InjLib.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        <title>@ViewBag.Title</title>
+        <link type="text/css" rel="stylesheet" href="~/Content/menu.css">
+        <link type="text/css" rel="stylesheet" href="~/Content/center.css">
+    
+        <script src="~/Js/lib.js"></script>
+        <script src="~/Js/TagFilter.js"></script>
+
+        @RenderSection("Css", required: false)
+        @RenderSection("Script", required: false)
+
+    </head>
+<body>
+    <div id="header">
+        <img src="~/Images/logo.gif" id="logo">
+        <h3 align="center">BLOG by UPRT-KEK-S</h3>
+        <div class="header_menu">
+            <ul>
+                <li>@Html.ActionLink("home", "Index", "Home")</li>
+                <li>@Html.ActionLink("events", "Events", "Home")</li>
+                <li>@Html.ActionLink("photo", "Photos", "Home")</li>
+                <li>@Html.ActionLink("autobiography", "Autobiography", "Home")</li>
+                <li>@Html.ActionLink("contacts", "Contacts", "Home")</li>
+            </ul>
+        </div>
+    </div>
+    <div>
+        @RenderBody()
+    </div>
+    <div id="footer">
+        <p align="center">
+            <i>Минск 2013</i>
+        </p>
+    </div>
+    <div style="position:fixed; left:0.1%; bottom:0.1%;">
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(window).scroll(function () { if ($(this).scrollTop() > 200) { $('#scroller').fadeIn(); } else { $('#scroller').fadeOut(); } });
+            $('#scroller').click(function () { $('body,html').animate({ scrollTop: 0 }, 500); return false; });
+        });</script>
+        <div id="scroller" style="display: none;"><span><a href="">
+            <img src="~/Images/icon.png" alt="TOTOP" /></a></span></div>
+</div>
+</body>
+</html>

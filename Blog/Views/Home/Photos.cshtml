@@ -1,0 +1,82 @@
+﻿@model Blog.Models.Db.PhotosComments
+@{
+    ViewBag.Title = "Photos";
+    Layout = "~/Views/Share/_Layout.cshtml";
+}
+@section Css {
+    <link type="text/css" rel="stylesheet" href="~/Content/center_other.css">
+    <link type="text/css" rel="stylesheet" href="~/Content/comment.css">
+}
+
+<div id="content">
+    @for (int i = 0; i < ViewBag.Photos.Count; i++)
+    {
+        var path = String.Format("{0}{1}", @"/Images/photo/", ViewBag.Photos[i].Name + @".jpg");
+        if (((i + 2) % 2) == 0)
+        {
+
+            <div class="photos">
+                <img class="r_p" src="@path">
+                <div class="post_title r_t">@ViewBag.Photos[i].Title</div>
+
+            </div><div class="date_l">@ViewBag.Photos[i].Date.ToString("d")</div>
+            <div class="colcom" style="text-align: right;">
+                <a href="/Home/ViewCommentsPhoto/@ViewBag.Photos[i].Id" style="text-align: center">Comments(@ViewBag.Photos[i].PhotosComments.Count) </a>
+            </div>
+            <div class="wrapper">
+                <details>
+                    <summary style="text-align: right">leave a comment</summary>
+                    <div class="CommR">
+                        @using (Html.BeginForm("AddCommentPhoto", "Home"))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true)
+
+                            <input type="text" name="Id" value="@ViewBag.Photos[i].Id" hidden="hidden" />
+                            <input type="text" name="Page" value="index" hidden="hidden" />
+                            <div>Input Name:</div>
+                            <input type="text" name="Name" class="CommName" required="" />
+                            <div>Input message:</div>
+                            <textarea name="Message" class="CommMess" cols="40" rows="3" required=""></textarea><br />
+                            <input type="submit" value="ADD" class="CommBut" style="text-align: center" />
+                        }
+                    </div>
+                </details>
+            </div>
+            <hr>
+        }
+        else
+        {
+            <div class="photos">
+                <img class="l_p" src="@path">
+                <div class="post_title l_t">@ViewBag.Photos[i].Title</div>
+
+
+            </div><div class="date_r">@ViewBag.Photos[i].Date.ToString("d")</div>
+            <div class="colcom" style="text-align: left;">
+                <a href="/Home/ViewCommentsPhoto/@ViewBag.Photos[i].Id" style="text-align: center">Comments(@ViewBag.Photos[i].PhotosComments.Count) </a>
+            </div>
+            <div class="wrapper">
+                <details>
+                    <summary style="text-align: left">leave a comment</summary>
+                    <div class="CommR">
+                        @using (Html.BeginForm("AddCommentPhoto", "Home"))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true)
+
+                            <input type="text" name="Id" value="@ViewBag.Photos[i].Id" hidden="hidden" />
+                            <input type="text" name="Page" value="index" hidden="hidden" />
+                            <div>Input Name:</div>
+                            <input type="text" name="Name" class="CommName" required="" />
+                            <div>Input message:</div>
+                            <textarea name="Message" class="CommMess" cols="40" rows="3" required=""></textarea><br />
+                            <input type="submit" value="ADD" class="CommBut" style="text-align: center" />
+                        }
+                    </div>
+                </details>
+            </div>
+            <hr>
+        }
+    }
+</div>

@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Blog.Models.Db.Photos>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Share/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreatePhoto")<br />
+    @Html.ActionLink("Back to List", "Index")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditPhoto", new { id = item.Id }) |
+                @Html.ActionLink("Details", "DetailsPhoto", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "DeletePhoto", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>

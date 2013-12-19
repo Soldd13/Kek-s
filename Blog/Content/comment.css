@@ -1,0 +1,54 @@
+input, textarea, summary {
+    outline: none;
+}
+input:active, textarea:active, summary:active {
+    outline: none;
+}
+:focus {
+    outline: none;
+}
+.CommR {
+    background-color: #242222;
+    background-repeat: no-repeat;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#00906f), to(#242222));
+    background-image: -webkit-linear-gradient(#00906f, #242222);
+    background-image: -moz-linear-gradient(top, #00906f, #242222);
+    background-image: -ms-linear-gradient(#00906f, #242222);
+    background-image: -o-linear-gradient(#00906f, #242222);
+    background-image: linear-gradient(#00906f, #242222);
+    padding: 0% 10% 2% 10%;
+}
+.CommR textarea {
+    width: 80%;
+}
+.CommR input {;
+    
+}
+.CommBut {
+    text-align: center;
+    background: #029070;
+    border: none;
+    width: 150px;
+    height: 25px;
+    border: solid 1px #fff;
+	-webkit-transition: All 0.3s ease;
+    -moz-transition: All 0.3s ease;
+    -o-transition: All 0.3s ease;
+    -ms-transition: All 0.3s ease;
+     transition: All 0.3s ease;
+}
+.CommBut:hover {
+ color: #ff8c00;	
+}
+.colcom{margin-left: 10px;margin-right: 10px;}
+.colcom a{ text-decoration: none;color: black;padding: 5px;background: #029070;text-align: center;}
+
+.wrapper {
+    padding-right: 10px;
+    padding-left: 10px;
+    }
+summary { cursor: pointer;background: #029070;padding: 5px; }
+    .no-details details > * { display: none; }
+    .no-details details > summary:before { float: left; width: 20px; content: '► '; }
+    .no-details details.open > summary:before { content: '▼ '; }
+    .no-details details summary { display: block; }

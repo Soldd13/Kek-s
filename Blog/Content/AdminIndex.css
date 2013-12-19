@@ -1,0 +1,34 @@
+.AdminLogin {
+    margin-top: 50px;
+    margin-left: 30%;
+    margin-right: 30%;
+    border: solid 1px;
+    width: 40%;
+    height: auto;
+    margin-bottom: 50px;
+    background: #808080;
+    -ms-opacity: 0.3;
+    opacity: 0.3;
+    -webkit-box-shadow: 0 0 10px;
+    -ms-box-shadow: 0 0 10px;
+    box-shadow: 0 0 10px;
+}
+
+.AdminLinker {
+    background: #808080;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    padding: 10%;
+}
+
+    .AdminLinker li {
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .AdminLinker a {
+        font-size: 30px;
+        color: #ffffff;
+        text-decoration: none;
+    }
