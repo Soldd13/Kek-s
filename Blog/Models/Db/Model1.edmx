@@ -4,24 +4,32 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="bazaatakowanaModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityContainer Name="bazaatakowanaModelStoreContainer">
-          <EntitySet Name="Events" EntityType="bazaatakowanaModel.Store.Events" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="EventsComments" EntityType="bazaatakowanaModel.Store.EventsComments" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Notes" EntityType="bazaatakowanaModel.Store.Notes" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="NotesComments" EntityType="bazaatakowanaModel.Store.NotesComments" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Photos" EntityType="bazaatakowanaModel.Store.Photos" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="PhotosComments" EntityType="bazaatakowanaModel.Store.PhotosComments" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="sysdiagrams" EntityType="bazaatakowanaModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
-          <AssociationSet Name="FK_EventsComments_Events" Association="bazaatakowanaModel.Store.FK_EventsComments_Events">
+      <Schema Namespace="db79cd0e6f5c6640c28100a29900dde70aModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="db79cd0e6f5c6640c28100a29900dde70aModelStoreContainer">
+          <EntitySet Name="Events" EntityType="db79cd0e6f5c6640c28100a29900dde70aModel.Store.Events" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="EventsComments" EntityType="db79cd0e6f5c6640c28100a29900dde70aModel.Store.EventsComments" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Notes" EntityType="db79cd0e6f5c6640c28100a29900dde70aModel.Store.Notes" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="NotesComments" EntityType="db79cd0e6f5c6640c28100a29900dde70aModel.Store.NotesComments" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Photos" EntityType="db79cd0e6f5c6640c28100a29900dde70aModel.Store.Photos" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PhotosComments" EntityType="db79cd0e6f5c6640c28100a29900dde70aModel.Store.PhotosComments" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sysdiagrams" EntityType="db79cd0e6f5c6640c28100a29900dde70aModel.Store.sysdiagrams" store:Type="Tables" store:Schema="dbo" store:Name="sysdiagrams">
+            <DefiningQuery>SELECT 
+      [sysdiagrams].[name] AS [name], 
+      [sysdiagrams].[principal_id] AS [principal_id], 
+      [sysdiagrams].[diagram_id] AS [diagram_id], 
+      [sysdiagrams].[version] AS [version], 
+      [sysdiagrams].[definition] AS [definition]
+      FROM [dbo].[sysdiagrams] AS [sysdiagrams]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_EventsComments_Events" Association="db79cd0e6f5c6640c28100a29900dde70aModel.Store.FK_EventsComments_Events">
             <End Role="Events" EntitySet="Events" />
             <End Role="EventsComments" EntitySet="EventsComments" />
           </AssociationSet>
-          <AssociationSet Name="FK_NotesComments_Notes" Association="bazaatakowanaModel.Store.FK_NotesComments_Notes">
+          <AssociationSet Name="FK_NotesComments_Notes" Association="db79cd0e6f5c6640c28100a29900dde70aModel.Store.FK_NotesComments_Notes">
             <End Role="Notes" EntitySet="Notes" />
             <End Role="NotesComments" EntitySet="NotesComments" />
           </AssociationSet>
-          <AssociationSet Name="FK_PhotosComments_Photos" Association="bazaatakowanaModel.Store.FK_PhotosComments_Photos">
+          <AssociationSet Name="FK_PhotosComments_Photos" Association="db79cd0e6f5c6640c28100a29900dde70aModel.Store.FK_PhotosComments_Photos">
             <End Role="Photos" EntitySet="Photos" />
             <End Role="PhotosComments" EntitySet="PhotosComments" />
           </AssociationSet>
@@ -85,19 +93,24 @@
           <Property Name="IdComm" Type="int" />
           <Property Name="Date" Type="datetime" />
         </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'db79cd0e6f5c6640c28100a29900dde70a.dbo.sysdiagrams' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
         <EntityType Name="sysdiagrams">
           <Key>
+            <PropertyRef Name="name" />
+            <PropertyRef Name="principal_id" />
             <PropertyRef Name="diagram_id" />
           </Key>
           <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
           <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="diagram_id" Type="int" Nullable="false" />
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <Association Name="FK_EventsComments_Events">
-          <End Role="Events" Type="bazaatakowanaModel.Store.Events" Multiplicity="0..1" />
-          <End Role="EventsComments" Type="bazaatakowanaModel.Store.EventsComments" Multiplicity="*" />
+          <End Role="Events" Type="db79cd0e6f5c6640c28100a29900dde70aModel.Store.Events" Multiplicity="0..1" />
+          <End Role="EventsComments" Type="db79cd0e6f5c6640c28100a29900dde70aModel.Store.EventsComments" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Events">
               <PropertyRef Name="Id" />
@@ -108,8 +121,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_NotesComments_Notes">
-          <End Role="Notes" Type="bazaatakowanaModel.Store.Notes" Multiplicity="0..1" />
-          <End Role="NotesComments" Type="bazaatakowanaModel.Store.NotesComments" Multiplicity="*" />
+          <End Role="Notes" Type="db79cd0e6f5c6640c28100a29900dde70aModel.Store.Notes" Multiplicity="0..1" />
+          <End Role="NotesComments" Type="db79cd0e6f5c6640c28100a29900dde70aModel.Store.NotesComments" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Notes">
               <PropertyRef Name="Id" />
@@ -120,8 +133,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PhotosComments_Photos">
-          <End Role="Photos" Type="bazaatakowanaModel.Store.Photos" Multiplicity="0..1" />
-          <End Role="PhotosComments" Type="bazaatakowanaModel.Store.PhotosComments" Multiplicity="*" />
+          <End Role="Photos" Type="db79cd0e6f5c6640c28100a29900dde70aModel.Store.Photos" Multiplicity="0..1" />
+          <End Role="PhotosComments" Type="db79cd0e6f5c6640c28100a29900dde70aModel.Store.PhotosComments" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Photos">
               <PropertyRef Name="Id" />
@@ -166,24 +179,24 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="bazaatakowanaModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="bazaatakowanaEntities" p1:LazyLoadingEnabled="true">
-          <EntitySet Name="Events" EntityType="bazaatakowanaModel.Events" />
-          <EntitySet Name="EventsComments" EntityType="bazaatakowanaModel.EventsComments" />
-          <EntitySet Name="Notes" EntityType="bazaatakowanaModel.Notes" />
-          <EntitySet Name="NotesComments" EntityType="bazaatakowanaModel.NotesComments" />
-          <EntitySet Name="Photos" EntityType="bazaatakowanaModel.Photos" />
-          <EntitySet Name="PhotosComments" EntityType="bazaatakowanaModel.PhotosComments" />
-          <EntitySet Name="sysdiagrams" EntityType="bazaatakowanaModel.sysdiagrams" />
-          <AssociationSet Name="FK_EventsComments_Events" Association="bazaatakowanaModel.FK_EventsComments_Events">
+      <Schema Namespace="db79cd0e6f5c6640c28100a29900dde70aModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="db79cd0e6f5c6640c28100a29900dde70aEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Events" EntityType="db79cd0e6f5c6640c28100a29900dde70aModel.Events" />
+          <EntitySet Name="EventsComments" EntityType="db79cd0e6f5c6640c28100a29900dde70aModel.EventsComments" />
+          <EntitySet Name="Notes" EntityType="db79cd0e6f5c6640c28100a29900dde70aModel.Notes" />
+          <EntitySet Name="NotesComments" EntityType="db79cd0e6f5c6640c28100a29900dde70aModel.NotesComments" />
+          <EntitySet Name="Photos" EntityType="db79cd0e6f5c6640c28100a29900dde70aModel.Photos" />
+          <EntitySet Name="PhotosComments" EntityType="db79cd0e6f5c6640c28100a29900dde70aModel.PhotosComments" />
+          <EntitySet Name="sysdiagrams" EntityType="db79cd0e6f5c6640c28100a29900dde70aModel.sysdiagrams" />
+          <AssociationSet Name="FK_EventsComments_Events" Association="db79cd0e6f5c6640c28100a29900dde70aModel.FK_EventsComments_Events">
             <End Role="Events" EntitySet="Events" />
             <End Role="EventsComments" EntitySet="EventsComments" />
           </AssociationSet>
-          <AssociationSet Name="FK_NotesComments_Notes" Association="bazaatakowanaModel.FK_NotesComments_Notes">
+          <AssociationSet Name="FK_NotesComments_Notes" Association="db79cd0e6f5c6640c28100a29900dde70aModel.FK_NotesComments_Notes">
             <End Role="Notes" EntitySet="Notes" />
             <End Role="NotesComments" EntitySet="NotesComments" />
           </AssociationSet>
-          <AssociationSet Name="FK_PhotosComments_Photos" Association="bazaatakowanaModel.FK_PhotosComments_Photos">
+          <AssociationSet Name="FK_PhotosComments_Photos" Association="db79cd0e6f5c6640c28100a29900dde70aModel.FK_PhotosComments_Photos">
             <End Role="Photos" EntitySet="Photos" />
             <End Role="PhotosComments" EntitySet="PhotosComments" />
           </AssociationSet>
@@ -203,11 +216,11 @@
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(bazaatakowanaModel.sp_helpdiagramdefinition_Result)">
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(db79cd0e6f5c6640c28100a29900dde70aModel.sp_helpdiagramdefinition_Result)">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(bazaatakowanaModel.sp_helpdiagrams_Result)">
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(db79cd0e6f5c6640c28100a29900dde70aModel.sp_helpdiagrams_Result)">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -227,7 +240,7 @@
           <Property Name="Message" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="PhotoName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="EventsComments" Relationship="bazaatakowanaModel.FK_EventsComments_Events" FromRole="Events" ToRole="EventsComments" />
+          <NavigationProperty Name="EventsComments" Relationship="db79cd0e6f5c6640c28100a29900dde70aModel.FK_EventsComments_Events" FromRole="Events" ToRole="EventsComments" />
         </EntityType>
         <EntityType Name="EventsComments">
           <Key>
@@ -238,7 +251,7 @@
           <Property Name="Message" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="IdComm" Type="Int32" />
           <Property Name="Date" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Events" Relationship="bazaatakowanaModel.FK_EventsComments_Events" FromRole="EventsComments" ToRole="Events" />
+          <NavigationProperty Name="Events" Relationship="db79cd0e6f5c6640c28100a29900dde70aModel.FK_EventsComments_Events" FromRole="EventsComments" ToRole="Events" />
         </EntityType>
         <EntityType Name="Notes">
           <Key>
@@ -249,7 +262,7 @@
           <Property Name="Message" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="Date" Type="DateTime" Precision="3" />
           <Property Name="PhotoName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="NotesComments" Relationship="bazaatakowanaModel.FK_NotesComments_Notes" FromRole="Notes" ToRole="NotesComments" />
+          <NavigationProperty Name="NotesComments" Relationship="db79cd0e6f5c6640c28100a29900dde70aModel.FK_NotesComments_Notes" FromRole="Notes" ToRole="NotesComments" />
         </EntityType>
         <EntityType Name="NotesComments">
           <Key>
@@ -260,7 +273,7 @@
           <Property Name="Message" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="IdComm" Type="Int32" />
           <Property Name="Date" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Notes" Relationship="bazaatakowanaModel.FK_NotesComments_Notes" FromRole="NotesComments" ToRole="Notes" />
+          <NavigationProperty Name="Notes" Relationship="db79cd0e6f5c6640c28100a29900dde70aModel.FK_NotesComments_Notes" FromRole="NotesComments" ToRole="Notes" />
         </EntityType>
         <EntityType Name="Photos">
           <Key>
@@ -270,7 +283,7 @@
           <Property Name="Name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="Date" Type="DateTime" Precision="3" />
           <Property Name="Title" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="PhotosComments" Relationship="bazaatakowanaModel.FK_PhotosComments_Photos" FromRole="Photos" ToRole="PhotosComments" />
+          <NavigationProperty Name="PhotosComments" Relationship="db79cd0e6f5c6640c28100a29900dde70aModel.FK_PhotosComments_Photos" FromRole="Photos" ToRole="PhotosComments" />
         </EntityType>
         <EntityType Name="PhotosComments">
           <Key>
@@ -281,21 +294,23 @@
           <Property Name="Message" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="IdComm" Type="Int32" />
           <Property Name="Date" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Photos" Relationship="bazaatakowanaModel.FK_PhotosComments_Photos" FromRole="PhotosComments" ToRole="Photos" />
+          <NavigationProperty Name="Photos" Relationship="db79cd0e6f5c6640c28100a29900dde70aModel.FK_PhotosComments_Photos" FromRole="PhotosComments" ToRole="Photos" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
+            <PropertyRef Name="name" />
+            <PropertyRef Name="principal_id" />
             <PropertyRef Name="diagram_id" />
           </Key>
           <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
           <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" />
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <Association Name="FK_EventsComments_Events">
-          <End Role="Events" Type="bazaatakowanaModel.Events" Multiplicity="0..1" />
-          <End Role="EventsComments" Type="bazaatakowanaModel.EventsComments" Multiplicity="*" />
+          <End Role="Events" Type="db79cd0e6f5c6640c28100a29900dde70aModel.Events" Multiplicity="0..1" />
+          <End Role="EventsComments" Type="db79cd0e6f5c6640c28100a29900dde70aModel.EventsComments" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Events">
               <PropertyRef Name="Id" />
@@ -306,8 +321,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_NotesComments_Notes">
-          <End Role="Notes" Type="bazaatakowanaModel.Notes" Multiplicity="0..1" />
-          <End Role="NotesComments" Type="bazaatakowanaModel.NotesComments" Multiplicity="*" />
+          <End Role="Notes" Type="db79cd0e6f5c6640c28100a29900dde70aModel.Notes" Multiplicity="0..1" />
+          <End Role="NotesComments" Type="db79cd0e6f5c6640c28100a29900dde70aModel.NotesComments" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Notes">
               <PropertyRef Name="Id" />
@@ -318,8 +333,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PhotosComments_Photos">
-          <End Role="Photos" Type="bazaatakowanaModel.Photos" Multiplicity="0..1" />
-          <End Role="PhotosComments" Type="bazaatakowanaModel.PhotosComments" Multiplicity="*" />
+          <End Role="Photos" Type="db79cd0e6f5c6640c28100a29900dde70aModel.Photos" Multiplicity="0..1" />
+          <End Role="PhotosComments" Type="db79cd0e6f5c6640c28100a29900dde70aModel.PhotosComments" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Photos">
               <PropertyRef Name="Id" />
@@ -345,9 +360,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="bazaatakowanaModelStoreContainer" CdmEntityContainer="bazaatakowanaEntities">
+        <EntityContainerMapping StorageEntityContainer="db79cd0e6f5c6640c28100a29900dde70aModelStoreContainer" CdmEntityContainer="db79cd0e6f5c6640c28100a29900dde70aEntities">
           <EntitySetMapping Name="Events">
-            <EntityTypeMapping TypeName="bazaatakowanaModel.Events">
+            <EntityTypeMapping TypeName="db79cd0e6f5c6640c28100a29900dde70aModel.Events">
               <MappingFragment StoreEntitySet="Events">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
@@ -358,7 +373,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="EventsComments">
-            <EntityTypeMapping TypeName="bazaatakowanaModel.EventsComments">
+            <EntityTypeMapping TypeName="db79cd0e6f5c6640c28100a29900dde70aModel.EventsComments">
               <MappingFragment StoreEntitySet="EventsComments">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -369,7 +384,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Notes">
-            <EntityTypeMapping TypeName="bazaatakowanaModel.Notes">
+            <EntityTypeMapping TypeName="db79cd0e6f5c6640c28100a29900dde70aModel.Notes">
               <MappingFragment StoreEntitySet="Notes">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
@@ -380,7 +395,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="NotesComments">
-            <EntityTypeMapping TypeName="bazaatakowanaModel.NotesComments">
+            <EntityTypeMapping TypeName="db79cd0e6f5c6640c28100a29900dde70aModel.NotesComments">
               <MappingFragment StoreEntitySet="NotesComments">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -391,7 +406,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Photos">
-            <EntityTypeMapping TypeName="bazaatakowanaModel.Photos">
+            <EntityTypeMapping TypeName="db79cd0e6f5c6640c28100a29900dde70aModel.Photos">
               <MappingFragment StoreEntitySet="Photos">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -401,7 +416,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PhotosComments">
-            <EntityTypeMapping TypeName="bazaatakowanaModel.PhotosComments">
+            <EntityTypeMapping TypeName="db79cd0e6f5c6640c28100a29900dde70aModel.PhotosComments">
               <MappingFragment StoreEntitySet="PhotosComments">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -412,7 +427,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="bazaatakowanaModel.sysdiagrams">
+            <EntityTypeMapping TypeName="db79cd0e6f5c6640c28100a29900dde70aModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -422,20 +437,20 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="bazaatakowanaModel.Store.sp_alterdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="bazaatakowanaModel.Store.sp_creatediagram" />
-          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="bazaatakowanaModel.Store.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="bazaatakowanaModel.Store.sp_helpdiagramdefinition">
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="db79cd0e6f5c6640c28100a29900dde70aModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="db79cd0e6f5c6640c28100a29900dde70aModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="db79cd0e6f5c6640c28100a29900dde70aModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="db79cd0e6f5c6640c28100a29900dde70aModel.Store.sp_helpdiagramdefinition">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="bazaatakowanaModel.sp_helpdiagramdefinition_Result">
+              <ComplexTypeMapping TypeName="db79cd0e6f5c6640c28100a29900dde70aModel.sp_helpdiagramdefinition_Result">
                 <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="bazaatakowanaModel.Store.sp_helpdiagrams">
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="db79cd0e6f5c6640c28100a29900dde70aModel.Store.sp_helpdiagrams">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="bazaatakowanaModel.sp_helpdiagrams_Result">
+              <ComplexTypeMapping TypeName="db79cd0e6f5c6640c28100a29900dde70aModel.sp_helpdiagrams_Result">
                 <ScalarProperty Name="Database" ColumnName="Database" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -444,8 +459,8 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="bazaatakowanaModel.Store.sp_renamediagram" />
-          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="bazaatakowanaModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="db79cd0e6f5c6640c28100a29900dde70aModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="db79cd0e6f5c6640c28100a29900dde70aModel.Store.sp_upgraddiagrams" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

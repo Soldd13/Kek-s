@@ -16,10 +16,10 @@ namespace Blog.Models.Db
     using System.Data.Objects.DataClasses;
     using System.Linq;
     
-    public partial class bazaatakowanaEntities : DbContext
+    public partial class db79cd0e6f5c6640c28100a29900dde70aEntities : DbContext
     {
-        public bazaatakowanaEntities()
-            : base("name=bazaatakowanaEntities")
+        public db79cd0e6f5c6640c28100a29900dde70aEntities()
+            : base("name=db79cd0e6f5c6640c28100a29900dde70aEntities")
         {
         }
     

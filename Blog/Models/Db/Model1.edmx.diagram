@@ -4,17 +4,17 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="16c802b5a4524e0b91ca11811f522947" Name="Diagram1">
-        <EntityTypeShape EntityType="bazaatakowanaModel.Events" Width="1.5" PointX="5.75" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="bazaatakowanaModel.EventsComments" Width="1.5" PointX="8" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="bazaatakowanaModel.Notes" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="bazaatakowanaModel.NotesComments" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="bazaatakowanaModel.Photos" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="bazaatakowanaModel.PhotosComments" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="bazaatakowanaModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
-        <AssociationConnector Association="bazaatakowanaModel.FK_EventsComments_Events" ManuallyRouted="false" />
-        <AssociationConnector Association="bazaatakowanaModel.FK_NotesComments_Notes" ManuallyRouted="false" />
-        <AssociationConnector Association="bazaatakowanaModel.FK_PhotosComments_Photos" ManuallyRouted="false" />
+      <Diagram DiagramId="8cc383c9d9df40b9a754db8f6a24fc79" Name="Diagram1">
+        <EntityTypeShape EntityType="db79cd0e6f5c6640c28100a29900dde70aModel.Events" Width="1.5" PointX="5.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="db79cd0e6f5c6640c28100a29900dde70aModel.EventsComments" Width="1.5" PointX="8" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="db79cd0e6f5c6640c28100a29900dde70aModel.Notes" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="db79cd0e6f5c6640c28100a29900dde70aModel.NotesComments" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="db79cd0e6f5c6640c28100a29900dde70aModel.Photos" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="db79cd0e6f5c6640c28100a29900dde70aModel.PhotosComments" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="db79cd0e6f5c6640c28100a29900dde70aModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="db79cd0e6f5c6640c28100a29900dde70aModel.FK_EventsComments_Events" ManuallyRouted="false" />
+        <AssociationConnector Association="db79cd0e6f5c6640c28100a29900dde70aModel.FK_NotesComments_Notes" ManuallyRouted="false" />
+        <AssociationConnector Association="db79cd0e6f5c6640c28100a29900dde70aModel.FK_PhotosComments_Photos" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

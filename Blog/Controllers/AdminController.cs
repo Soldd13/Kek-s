@@ -13,7 +13,7 @@ namespace Blog.Controllers
 
     public class AdminController : Controller
     {
-        private bazaatakowanaEntities db = new bazaatakowanaEntities();
+        private db79cd0e6f5c6640c28100a29900dde70aEntities db = new db79cd0e6f5c6640c28100a29900dde70aEntities();
 
         public ActionResult Index()
         {
